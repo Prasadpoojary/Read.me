@@ -3,7 +3,7 @@
 
 # Features : 
 
-[-] Sign Up with OTP verification from Scratch
+- [x] Sign Up with OTP verification from Scratch
 [1] Upload/edit/delete and Enroll Free books, Premium books and Free courses
 [1] Subscribe to the uploader and get notification on every upload
 [1] Panel to show suggested books
