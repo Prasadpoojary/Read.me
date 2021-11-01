@@ -1,0 +1,83 @@
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read.me</title>
+    <link rel="stylesheet" href="~/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="~/css/layoutStyle.css">
+    <link rel="stylesheet" href="~/css/homeStyle.css">
+    <link rel="stylesheet" href="~/css/GatewayStyle.css">
+    <script src="~/js/jquery.js"></script>
+    <script src="~/js/animation.js"></script>
+</head>
+<body>
+    <div class="layer"></div>
+    <header>
+        <div class="main-menu">
+            <button class="mobile-menu"><i class="fa fa-bars"></i></button>
+            <h1><span><i class="fa fa-dice-d6"></i> </span>Read.me<span> Gateway</span></h1>
+
+        </div>
+
+    </header>
+
+    <section class="container">
+       
+        <div class="gw-main">
+           
+            <h2>Bank Transfer</h2>
+            <div class="gw-bank">
+                <form action="/withdraw" method="post" id="gw-bank-form">
+                    <div>
+                        <input class="gw-bank-number" name="bank" type="number" placeholder="Bank Account Number">
+                    </div>
+                    <div>
+                        <input  class="gw-bank-ifsc" name="ifsc"  type="text" placeholder="IFSC Code">
+                    </div>
+                    <div>
+                        <button type="submit">Withdraw</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="gw-upi">
+            <div>
+                <h2>Payment through UPI</h2>
+                <div class="gw-upi-logo">
+                   
+                    <i class="fab fa-amazon-pay"></i>
+                    <i class="fab fa-google-wallet"></i>
+                    <i class="fab fa-apple-pay"></i>
+                    <!-- <i class="fab fa-cc-discover"></i> -->
+              
+                </div>
+                <div class="gw-upi-id">
+
+                    <form action="/withdraw/upi" method="post" id="gw-upi-form">
+                        <input type="text" name="upiID" placeholder="Type your UPI ID">
+                        <button>Draw</button>
+                    </form>
+                </div>
+            </div>
+          
+        </div>
+    </section>
+    <footer>
+        <!-- @* <div class="quote">
+            <p>Read on Read.me</p>
+        </div> *@ -->
+        <div>
+            <p><span><i class="fa fa-copyright"></i> </span>Copyright 2021, <span>All rights reserved</span></p>
+        </div>
+    </footer>
+</body>
+</html>
+

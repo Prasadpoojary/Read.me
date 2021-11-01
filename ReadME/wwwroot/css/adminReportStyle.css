@@ -1,0 +1,340 @@
+
+
+
+
+.success-message, .error-message {
+    z-index: 5;
+    position: absolute;
+    top: 15%;
+    right: 5%;
+    /* background:#0d7c03; */
+    padding: 10px;
+    color: #088f04;
+    background: white;
+    border-radius: 3px;
+    box-shadow: 0px 0px 8px 0px #b6b9b6;
+    min-width: 200px;
+    width: 20vw;
+    max-width: 400px;
+    transition: .3s ease-in-out;
+}
+
+
+    .success-message p, .error-message p {
+        padding-left: 15px;
+    }
+
+        .success-message p span, .error-message p span {
+            padding-right: 10px;
+        }
+
+    .success-message button, .error-message button {
+        position: absolute;
+        cursor: pointer;
+        top: 0px;
+        right: 0px;
+        padding: 10px;
+        padding-bottom: 8px;
+        margin-right: 5px;
+        background: transparent;
+        color: #b3b3b3;
+        outline: none;
+        border: none;
+    }
+
+        .success-message button i, .error-message button i {
+            font-size: 20px;
+        }
+
+.error-message {
+    color: red;
+    background: #b80000;
+    color: white;
+    box-shadow: none;
+}
+
+    .error-message button {
+        color: #ec6c6c;
+    }
+
+
+
+    
+.datasource-container-report
+{
+    display: flex;
+    justify-content: center;
+}
+
+.datasource-container-report ul
+{
+    
+    list-style:none;
+}
+
+ .datasource-container-report ul a
+{
+    text-decoration: none;
+    color:#f8eaea;
+    width:100%;
+    
+    
+} 
+
+.datasource-container-report li
+{
+    margin:10px 0px;
+    background:#8d0404;
+    padding:10px 70px;
+    border-radius: 4px;
+    border:1px solid #8d0404;
+    transition: .3s ease-in-out;
+    position:relative;
+    
+}
+
+.datasource-container-report li div
+{
+    background:#fff;
+    color:#b60707;
+    width:20px;
+    height:20px;
+    position:absolute;
+    top:50%;
+    right:15px;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+    border-radius: 50%;
+    border:1px solid #960000;
+    transition: .3s ease-in-out;
+}
+
+
+.datasource-container-report span
+{
+    font-size:11px;
+    color: #ff7171;
+    padding-left: 10px;
+}
+.datasource-container-report li:hover
+{
+ 
+   background:#ffffff;
+   color:#960000;
+   border:1px solid #f11919;
+
+}
+.datasource-container-report li:hover > div
+{
+ 
+   color:#ffffff;
+   background:#960000;
+}
+
+
+
+.co-details
+{
+    margin-top: 30px;
+}
+
+
+.co-details h4
+{
+    color:#6138d1;
+    text-transform: capitalize;
+    text-align: center;
+}
+
+.co-author
+{
+    text-align: right;
+    padding-right: 18vw;
+    color:#888888;
+    font-size: 13px;
+}
+
+.co-img-desc
+{
+    display: flex;
+    margin-top: 30px;
+    justify-content: space-around;
+    align-items: center;
+    padding-right: 70px;
+    flex-wrap: wrap;
+}
+
+.co-img-desc .co-img
+{
+    width:30%;
+    min-width: 200px;
+    text-align: center;
+   
+}
+.co-img-desc .co-desc
+{
+    width:70%;
+    font-size: 14px;
+    
+}
+.co-img-desc img
+{
+    width:150px;
+    height:150px;
+    border-radius: 50%;
+}
+
+
+.book-spec
+{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+    width:100%;
+}
+
+.book-spec div
+{
+    text-align: center;
+    position:relative;
+}
+
+.book-spec p
+{
+    font-size: 12px;
+    transition: .3s ease-in-out;
+}
+
+.book-spec a
+{
+    text-decoration: none;
+}
+
+
+.book-spec a i
+{
+    font-size: 20px;
+    color:#272727;
+    transition:.3s ease-in-out;
+}
+
+.book-spec a i:hover
+{
+    color:#aaaaaa;
+}
+
+.book-spec div:hover >   p
+{
+    font-weight: 1000;
+}
+
+.co-button
+{
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+    width:100%;
+
+}
+
+.co-button a
+{
+    text-decoration: none;
+    padding:8px 15px;
+    background:#3b009b;
+    color:white;
+    border-radius: 3px;
+    transition: .4s ease-in-out;
+}
+
+.co-button a:hover
+{
+    background:#1b1b1b;
+}
+.co-button a span
+{
+    color:#a8a8a8;
+    font-weight: 600;
+}
+
+a.co-save
+{
+    background:none;
+    color:#3b009b;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+a.co-save:hover
+{
+    background:none;
+    color: #1b1b1b;;
+}
+
+
+.co-comments-cont
+{
+    margin-top: 50px;
+    border-top: 2px solid #dadada;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width:100%;
+}
+
+.co-comment
+{
+    width:70%;
+    padding:20px;
+    background:#aa0202;
+    font-size: 13px;
+    color: #ffffff;
+    margin:25px 0px;
+    border-radius: 10px;
+}
+
+.co-comment:nth-of-type(even)
+{
+    margin-left: 150px;
+
+}
+
+.co-comment-from
+{
+    text-align: right;
+    margin-top: 5px;
+    color:#ff8f94;
+    font-size: 12px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row-reverse;
+}
+
+.co-comment-from span
+{
+    font-size: 10px;
+    color:#c8c9cc;
+}
+
+
+a.re-solved
+{
+    background:green;
+}
+
+@media screen and (max-width:1000px) 
+{
+
+    .most-valued-container
+    {
+        margin-bottom:30px;
+        padding-bottom: 15px;
+    }
+
+}

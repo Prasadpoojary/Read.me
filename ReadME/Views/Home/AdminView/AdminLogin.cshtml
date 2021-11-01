@@ -1,0 +1,72 @@
+﻿@{
+    Layout = null;
+    
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read.me | Admin</title>
+    <link rel="stylesheet" href="~/css/adminHeaderStyle.css">
+    <link rel="stylesheet" href="~/fontawesome/css/all.min.css">
+        <link rel="icon" href="~/assets/icon.png" type="image/png">
+
+    <script src="~/js/jquery.js"></script>
+    <script src="~/js/animation.js"></script>
+</head>
+<body>
+    <header>
+        @if (@ViewBag.message != null && @ViewBag.message == true)
+        {
+            @if (@ViewBag.success != null)
+            {
+                <div class="success-message">
+                    <p><span><i class="fa fa-check-circle"></i></span>@ViewBag.success</p><button><i class="fa fa-times"></i></button>
+                </div>
+            }
+
+            @if (@ViewBag.error != null)
+            {
+                <div class="error-message">
+                    <p><span><i class="fa fa-ban"></i></span>@ViewBag.error</p><button><i class="fa fa-times"></i></button>
+                </div>
+            }
+
+        }
+    </header>
+    <section>
+        <div class="admin-login container">
+            <h2 class="loginHeader">Admin Login</span></h2>
+            <div class="loginForm">
+                <form method="post" action="/admin" id="form-login" novalidate>
+                    <div class="wrapper">
+                        <input type="text" id="reg-email" name="email" required />
+                        <label for="reg-email" id="reg-emailLabel">E-mail Address</label>
+                    </div>
+                    <div class="wrapper">
+                        <input type="password" name="password" id="password" required />
+
+                        <label for="password" id="passwordLabel">Password</label>
+
+                        <button type="button" class="logo"><i class="fa fa-eye"></i></button>
+                        <button type="button" class="logo offLogo"><i class="fa fa-eye-slash"></i></button>
+                    </div>
+                    <div class="wrapper submitWrapper ">
+                        <ul class="login-btn-wrapper">
+                            <li><input type="submit" value="Login"></li>
+                            <li><a href="/forgot?redirect=/admin" class="forgotpass">Change Password</a></li>
+
+                        </ul>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+   
+
+</body>
+</html>

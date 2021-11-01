@@ -1,0 +1,133 @@
+﻿@{
+    Layout = null;
+
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read.me</title>
+    <link rel="icon" href="~/assets/icon.png" type="image/png">
+
+    <link rel="stylesheet" href="~/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="~/css/manageStyle.css">
+    <script src="~/js/jquery.js"></script>
+    <script src="~/js/animation.js"></script>
+</head>
+<body>
+    <div class="layer"></div>
+    <header>
+
+        <div class="main-menu">
+            <button class="mobile-menu"><i class="fa fa-bars"></i></button>
+            <h1><span><i class="fa fa-dice-d6"></i> </span>Read.me</h1>
+
+            <nav>
+                <button class="close-nav"><i class="fa fa-times"></i></button>
+                <ul>
+                    <a href="/admin" class="homeNav">
+                        <li><i class="fa fa-home"></i> Home</li>
+                        <div class="hover active"></div>
+                    </a>
+
+                    @if (ViewBag.admin.isSuperuser == true)
+                    {
+                        <a href="/admin/manage" class="eduHubNav">
+                            <li><i class="fa fa-cogs"></i> Manage</li>
+                            <div class="hover"></div>
+                        </a>
+                    }
+
+
+                    @if (ViewBag.admin.access_report == true)
+                    {
+                        <a href="/admin/reports" class="eduHubNav">
+                            <li><i class="fa fa-ban"></i> Reports</li>
+                            <div class="hover"></div>
+                        </a>
+                    }
+
+                    @if (ViewBag.admin.access_ticket == true)
+                    {
+                        <a href="/admin/tickets" class="eduHubNav">
+                            <li><i class="fa fa-exclamation-triangle"></i> Tickets</li>
+                            <div class="hover"></div>
+                        </a>
+                    }
+
+                    <a href="/admin/logout" class="free-nav">
+                        <li><span><i class="fa fa-power-off"></i></span></li>
+                    </a>
+                </ul>
+            </nav>
+
+        </div>
+
+
+
+        @if (@ViewBag.message != null && @ViewBag.message == true)
+        {
+            @if (@ViewBag.success != null)
+            {
+                <div class="success-message">
+                    <p><span><i class="fa fa-check-circle"></i></span>@ViewBag.success</p><button><i class="fa fa-times"></i></button>
+                </div>
+            }
+
+            @if (@ViewBag.error != null)
+            {
+                <div class="error-message">
+                    <p><span><i class="fa fa-ban"></i></span>@ViewBag.error</p><button><i class="fa fa-times"></i></button>
+                </div>
+            }
+
+        }
+
+    </header>
+
+    <section class="container">
+
+        <div class="signupForm">
+
+            <form id="form-signup" method="post" action="/admin/add" novalidate>
+                <div class="wrapper">
+                    <input type="text" name="username" id="reg-username" required />
+                    <label for="reg-username" id="reg-usernameLabel">Username</label>
+                </div>
+                <div class="wrapper">
+                    <input type="text" id="reg-email" name="email" required />
+                    <label for="reg-email" id="reg-emailLabel">E-mail Address</label>
+                </div>
+                <div class="wrapper">
+                    <input type="password" id="reg-password" name="password" required />
+                    <label for="reg-password" id="reg-passwordLabel">Password</label>
+
+                    <button type="button" class="logo"><i class="fa fa-eye"></i></button>
+                    <button type="button" class="logo offLogo"><i class="fa fa-eye-slash"></i></button>
+                </div>
+                <div class="wrapper">
+                    <input type="password" id="reg-confpass" required />
+                    <label for="reg-confpass" id="reg-confpassLabel">Confirm Password</label>
+
+                    <button type="button" class="logo"><i class="fa fa-eye"></i></button>
+                    <button type="button" class="logo offLogo"><i class="fa fa-eye-slash"></i></button>
+                </div>
+                <div class="signupSubmitWrapper">
+                    <ul class="signup-btn-wrapper">
+                        <li><input type="submit" value="Create"></li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+
+    </section>
+    <footer>
+
+        <div>
+            <p><span> </span>Stay secured, <span>Keep Growing</span></p>
+        </div>
+    </footer>
+</body>
+</html>

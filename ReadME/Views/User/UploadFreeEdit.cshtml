@@ -1,0 +1,191 @@
+@{
+    Layout = "./../Shared/" + ViewBag.layoutName;
+}
+
+
+@model ReadME.Models.BookData;
+@using ReadME.Models;
+
+
+<section class="container">
+
+    <div class="most-valued-container">
+        <div class="sub-header">
+            <div class="sub-heading">
+                <h2><span><i class="fa fa-flag-checkered"></i></span> Uploads</h2>
+            </div>
+        </div>
+        @if (ViewBag.uploadedFreeBooks?.Count > 0 || ViewBag.uploadedPremiumBooks?.Count > 0 || ViewBag.uploadedCourses?.Count > 0)
+        {
+            <div class="uploads-container">
+                @if (ViewBag.uploadedPremiumBooks?.Count > 0)
+                {
+
+                    <div class="uc-main">
+                        <div class="uc-main-header">
+                            <p>Premium</p>
+                        </div>
+
+                        @foreach (Book book in ViewBag.uploadedPremiumBooks)
+                        {
+                            <div class="uc-content">
+                                <div class="totalEnrollment">
+                                    <p>@book.Readers Enrollments</p>
+                                    <div class="totalEn-pointer"></div>
+                                </div>
+                                <div class="uc-content-head">
+                                    <div>
+                                        <p>@book.Name</p>
+                                    </div>
+                                    <a href="/edit/book/premium/@book.Id" title="edit this book"><i class="fa fa-pen"></i></a>
+                                </div>
+                                <div class="uc-content-tail">
+                                    <a>@string.Format("{0:MMM dd, yyyy}", book.UploadTime)</a>
+                                    <a class="uc-content-price"><i class="fa fa-rupee-sign"></i> @book.Price</a>
+                                    <a href="/delete/book/@book.Id" class="uc-content-delete"><i class="fa fa-trash-alt"></i> Delete</a>
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+                }
+
+                @if (ViewBag.uploadedFreeBooks?.Count > 0)
+                {
+                    <div class="uc-main uc-free">
+                        <div class="uc-main-header">
+                            <p>Free</p>
+                        </div>
+
+                        @foreach (Book book in ViewBag.uploadedFreeBooks)
+                        {
+                            <div class="uc-content">
+                                <div class="totalEnrollment">
+                                    <p>@book.Readers Enrollments</p>
+                                    <div class="totalEn-pointer"></div>
+                                </div>
+                                <div class="uc-content-head">
+                                    <div>
+                                        <p>@book.Name</p>
+                                    </div>
+                                    <a href="/edit/book/free/@book.Id" title="edit this book"><i class="fa fa-pen"></i></a>
+                                </div>
+                                <div class="uc-content-tail">
+                                    <a>@string.Format("{0:MMM dd, yyyy}", book.UploadTime)</a>
+                                    <a href="/delete/book/@book.Id" class="uc-content-delete"><i class="fa fa-trash-alt"></i> Delete</a>
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+                }
+
+
+                @if (ViewBag.uploadedCourses?.Count > 0)
+                {
+                    <div class="uc-main uc-course">
+                        <div class="uc-main-header">
+                            <p>Courses</p>
+                        </div>
+                        @foreach (Course course in ViewBag.uploadedCourses)
+                        {
+                            <div class="uc-content">
+                                <div class="totalEnrollment">
+                                    <p>@course.Readers Entrolments</p>
+                                    <div class="totalEn-pointer"></div>
+                                </div>
+                                <div class="uc-content-head">
+                                    <div>
+                                        <p>@course.Name</p>
+                                    </div>
+                                    <a href="/edit/course/@course.Id" title="edit this course"><i class="fa fa-pen"></i></a>
+                                </div>
+                                <div class="uc-content-tail">
+                                    <a>@string.Format("{0:MMM dd, yyyy}", course.UploadTime)</a>
+                                    <a href="/delete/course/@course.Id" class="uc-content-delete"><i class="fa fa-trash-alt"></i> Delete</a>
+                                </div>
+                            </div>
+
+                        }
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+
+
+            <div class="emptyCont">
+                <div class="eiCross">
+
+                    <i class="fa fa-times" style="color:#dfdfdf;font-size:42px;padding:15px 23px;border-radius: 50%;border:3px solid #dfdfdf;"></i>
+                </div>
+                <p class="eiMain">No Free uploads Found</p>
+                <p class="eiSub">You can upload some Free books and you can see them here.</p>
+            </div>
+
+        }
+    </div>
+    <div class="premium-container">
+        <div class="sub-header">
+            <div class="sub-heading">
+                <h2><span><i class="fa fa-cloud-upload-alt"></i></span> Upload Here</h2>
+            </div>
+        </div>
+        <div class="container">
+            <form id="edit-form-upload-free-book" action="/edit/free/@ViewBag.targetBook.Id" method="post" enctype="multipart/form-data" novalidate>
+                <div class="wrapper">
+                    <input type="text" id="up-name" value="@ViewBag.targetBook.Name" asp-for="Name" required />
+                    <label for="up-name" id="up-nameLabel">Name</label>
+                </div>
+                <div class="wrapper">
+                    <input type="text" id="up-author"  value="@ViewBag.targetBook.Author"  asp-for="Author" required />
+                    <label for="up-author" id="up-authorLabel">Author</label>
+                </div>
+                <div class="wrapper">
+                    <input type="text" id="up-main-lang"  value="@ViewBag.targetBook.Language"  asp-for="Language" list="up-langList" required />
+                    <label for="up-main-lang" id="up-main-langLabel">Language</label>
+                    <datalist id="up-langList">
+                        <option value="Kannada"></option>
+                        <option value="English"></option>
+                        <option value="Hindi"></option>
+                        <option value="Tamil"></option>
+                        <option value="Telugu"></option>
+                        <option value="Marati"></option>
+                        <option value="Urdu"></option>
+                        <option value="Tulu"></option>
+                    </datalist>
+                </div>
+                <div class="wrapper textarea-wrapper">
+                    <input class="hiddenVal"  type="hidden" value="@ViewBag.targetBook.Description" />
+                    <textarea id="reg-textarea" class="targetHiddenVal"  asp-for="Description" required></textarea>
+                    <label for="reg-textarea" id="reg-textareaLabel">Description</label>
+                </div>
+                <div class="wrapper">
+                    <input type="text" id="up-main-cat"  value="@ViewBag.targetBook.Category"  asp-for="Category" list="up-catList" required />
+                    <label for="up-main-cat" id="up-main-catLabel">Category</label>
+                    <datalist id="up-catList">
+                        @foreach (Category category in ViewBag.categories)
+                        {
+                            <option value="@category.Name"></option>
+                        }
+                    </datalist>
+                </div>
+
+                <div class="wrapper wrapper-file-upload">
+                    <label id="up-book-source-label">Please select Thumbnail image</label>
+                    <input type="file" id="up-book-thumbnail" value="HiddenValue.jpg" asp-for="ThumbnailFile" accept=".jpg" required />
+                </div>
+                <div class="wrapper wrapper-file-upload">
+                    <label id="up-book-file-label">Please select one PDF File</label>
+                    <input type="file" id="up-book-file"  value="HiddenValue.pdf"  asp-for="BookFile" accept=".pdf" required />
+                </div>
+                <div class="signupSubmitWrapper">
+                    <ul class="signup-btn-wrapper">
+                        <li><input type="submit" value="Upload"></li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

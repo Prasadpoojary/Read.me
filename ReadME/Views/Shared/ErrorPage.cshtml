@@ -1,0 +1,71 @@
+﻿@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read.me | Page Not Found</title>
+
+    <link rel="stylesheet" href="~/fontawesome/css/all.min.css">
+
+
+    <style>
+        .pagenotfound {
+            padding: 100px 40px;
+        }
+
+            .pagenotfound h1 {
+                font-size: 100px;
+                font-weight: 900;
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                color: #130457;
+                margin-bottom: 80px;
+            }
+
+            .pagenotfound span {
+                color: #7689f5;
+            }
+
+            .pagenotfound a {
+                margin-bottom: -100px;
+                background: #130457;
+                color: #7689f5;
+                padding: 10px 30px;
+                text-decoration: none;
+                border-radius: 20px;
+                font-weight: 700;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                transition: .4s ease-in-out;
+            }
+
+                .pagenotfound a:hover {
+                    color: #130457;
+                    background: #7689f5;
+                }
+
+                .pagenotfound a i {
+                    padding: 0px 0px 0px 10px;
+                    color: #fff;
+                }
+    </style>
+</head>
+<body>
+    <div class="layer"></div>
+
+
+
+    <section class="pagenotfound">
+        <h1><span>@ViewBag.code</span> @ViewBag.message</h1>
+        <a href="/">Take me to Home <i class="fa fa-arrow-alt-circle-right"></i></a>
+    </section>
+
+
+
+
+</body>
+</html>

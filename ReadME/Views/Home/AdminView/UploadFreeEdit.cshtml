@@ -1,0 +1,172 @@
+@{
+    Layout = null;
+
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read.me</title>
+    <link rel="stylesheet" href="~/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="~/css/adminStyle.css">
+    <link rel="stylesheet" href="~/css/AL_uploadStyle.css">
+    <link rel="icon" href="~/assets/icon.png" type="image/png">
+
+    <script src="~/js/jquery.js"></script>
+    <script src="~/js/animation.js"></script>
+</head>
+<body>
+    <div class="layer"></div>
+    <header>
+
+        <div class="main-menu">
+            <button class="mobile-menu"><i class="fa fa-bars"></i></button>
+            <h1><span><i class="fa fa-dice-d6"></i> </span>Read.me</h1>
+
+            <nav>
+                <button class="close-nav"><i class="fa fa-times"></i></button>
+                <ul>
+                    <a href="/admin" class="homeNav">
+                        <li><i class="fa fa-home"></i> Home</li>
+                        <div class="hover active"></div>
+                    </a>
+
+                    @if (ViewBag.admin.isSuperuser == true)
+                    {
+                        <a href="/admin/manage" class="eduHubNav">
+                            <li><i class="fa fa-cogs"></i> Manage</li>
+                            <div class="hover"></div>
+                        </a>
+                    }
+
+
+                    @if (ViewBag.admin.access_report == true)
+                    {
+                        <a href="/admin/reports" class="eduHubNav">
+                            <li><i class="fa fa-ban"></i> Reports</li>
+                            <div class="hover"></div>
+                        </a>
+                    }
+
+                    @if (ViewBag.admin.access_ticket == true)
+                    {
+                        <a href="/admin/tickets" class="eduHubNav">
+                            <li><i class="fa fa-exclamation-triangle"></i> Tickets</li>
+                            <div class="hover"></div>
+                        </a>
+                    }
+
+                    <a href="/admin/logout" class="free-nav">
+                        <li><span><i class="fa fa-power-off"></i></span></li>
+                    </a>
+                </ul>
+            </nav>
+
+        </div>
+
+
+
+        @if (@ViewBag.message != null && @ViewBag.message == true)
+        {
+            @if (@ViewBag.success != null)
+            {
+                <div class="success-message">
+                    <p><span><i class="fa fa-check-circle"></i></span>@ViewBag.success</p><button><i class="fa fa-times"></i></button>
+                </div>
+            }
+
+            @if (@ViewBag.error != null)
+            {
+                <div class="error-message">
+                    <p><span><i class="fa fa-ban"></i></span>@ViewBag.error</p><button><i class="fa fa-times"></i></button>
+                </div>
+            }
+
+        }
+
+    </header>
+
+
+    @model ReadME.Models.BookData;
+        @using ReadME.Models;
+
+
+        <section class="container">
+
+       
+            <div class="premium-container">
+                <div class="sub-header">
+                    <div class="sub-heading">
+                        <h2><span><i class="fa fa-cloud-upload-alt"></i></span> Upload Here</h2>
+                    </div>
+                </div>
+                <div class="container">
+                    <form id="edit-form-upload-free-book" action="/edit/free/@ViewBag.targetBook.Id?redirect=/admin/edit/free/@ViewBag.targetBook.Id" method="post" enctype="multipart/form-data" novalidate>
+                        <div class="wrapper">
+                            <input type="text" id="up-name" value="@ViewBag.targetBook.Name" asp-for="Name" required />
+                            <label for="up-name" id="up-nameLabel">Name</label>
+                        </div>
+                        <div class="wrapper">
+                            <input type="text" id="up-author" value="@ViewBag.targetBook.Author" asp-for="Author" required />
+                            <label for="up-author" id="up-authorLabel">Author</label>
+                        </div>
+                        <div class="wrapper">
+                            <input type="text" id="up-main-lang" value="@ViewBag.targetBook.Language" asp-for="Language" list="up-langList" required />
+                            <label for="up-main-lang" id="up-main-langLabel">Language</label>
+                            <datalist id="up-langList">
+                                <option value="Kannada"></option>
+                                <option value="English"></option>
+                                <option value="Hindi"></option>
+                                <option value="Tamil"></option>
+                                <option value="Telugu"></option>
+                                <option value="Marati"></option>
+                                <option value="Urdu"></option>
+                                <option value="Tulu"></option>
+                            </datalist>
+                        </div>
+                        <div class="wrapper textarea-wrapper">
+                                 <input class="hiddenVal" type="hidden" value="@ViewBag.targetBook.Description" />
+                    <textarea id="reg-textarea" class="targetHiddenVal" asp-for="Description"  required></textarea>
+                    <label for="reg-textarea" id="reg-textareaLabel">Description</label>
+                        </div>
+                        <div class="wrapper">
+                            <input type="text" id="up-main-cat" value="@ViewBag.targetBook.Category" asp-for="Category" list="up-catList" required />
+                            <label for="up-main-cat" id="up-main-catLabel">Category</label>
+                            <datalist id="up-catList">
+                                @foreach (Category category in ViewBag.categories)
+                                {
+                                    <option value="@category.Name"></option>
+                                }
+                            </datalist>
+                        </div>
+
+                        <div class="wrapper wrapper-file-upload">
+                            <label id="up-book-source-label">Please select Thumbnail image</label>
+                            <input type="file" id="up-book-thumbnail" value="HiddenValue.jpg" asp-for="ThumbnailFile" accept=".jpg" required />
+                        </div>
+                        <div class="wrapper wrapper-file-upload">
+                            <label id="up-book-file-label">Please select one PDF File</label>
+                            <input type="file" id="up-book-file" value="HiddenValue.pdf" asp-for="BookFile" accept=".pdf" required />
+                        </div>
+                        <div class="signupSubmitWrapper">
+                            <ul class="signup-btn-wrapper">
+                                <li><input type="submit" value="Upload"></li>
+                            </ul>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+
+            <div>
+                <p><span> </span>Stay secured, <span>Keep Growing</span></p>
+            </div>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,115 @@
+﻿@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read.me</title>
+    <link rel="stylesheet" href="~/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="~/css/layoutStyle.css">
+    <link rel="stylesheet" href="~/css/homeStyle.css">
+    <link rel="stylesheet" href="~/css/GatewayStyle.css">
+    <script src="~/js/jquery.js"></script>
+    <script src="~/js/animation.js"></script>
+</head>
+<body>
+    <div class="layer"></div>
+    <header>
+        <div class="main-menu">
+            <button class="mobile-menu"><i class="fa fa-bars"></i></button>
+            <h1><span><i class="fa fa-dice-d6"></i> </span>Read.me<span> Gateway</span></h1>
+
+        </div>
+
+    </header>
+
+    <section class="container">
+
+        <div class="gw-main">
+
+            <h2>Credit Card or Debit Card<span> for Rs.@ViewBag.price</span></h2>
+            <form method="post" action="/buy/@ViewBag.bookId" id="cardPaymentForm">
+                <div class="gw-card">
+                    <div class="gw-card-front">
+                        <div class="gw-card-logo">
+                            <i class="fa fa-credit-card"></i>
+                            <i class="fab fa-cc-visa"></i>
+                            <i class="fab fa-cc-mastercard"></i>
+                            <i class="fab fa-cc-discover"></i>
+                            <i class="fab fa-cc-amex"></i>
+                        </div>
+                        <div class="gw-card-number">
+                            <input type="number" class="gw-cn-one" placeholder="3734" name="firstFour" id="">
+                            <input type="number" class="gw-cn-two" placeholder="2352" name="secondFour" id="">
+                            <input type="number" class="gw-cn-three" placeholder="8697" name="thirdFour" id="">
+                            <input type="number" class="gw-cn-four" placeholder="3423" name="forthFour" id="">
+                        </div>
+                        <div class="gw-card-expire">
+                            <label>Valid Thru</label>
+                            <input placeholder="07/22" class="gw-ce-date" type="text">
+                        </div>
+                    </div>
+                    <div class="gw-card-back">
+                        <div class="gw-card-info">
+                            <p>Please make sure that you are entering valid details, otherwise payment will not get processed. Please cross validate once again.</p>
+                        </div>
+                        <div class="gw-card-number">
+                            <input type="number" class="gw-cn-one" placeholder="3734" name="" id="">
+                            <input type="number" class="gw-cn-two" placeholder="2352" name="" id="">
+                            <input type="number" class="gw-cn-three" placeholder="8697" name="" id="">
+                            <input type="number" class="gw-cn-four" placeholder="3423" name="" id="">
+                        </div>
+                        <div class="gw-cvv-cont">
+                            <div class="gw-cvv-before">
+                                cvv
+                            </div>
+                            <div class="gw-cvv">
+                                <input type="number" placeholder="348" name="cvv" id="">
+                            </div>
+                        </div>
+                        <div class="gw-card-expire">
+                            <label>Valid Thru</label>
+                            <input placeholder="07/22" class="gw-ce-date" type="text">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="gw-upi">
+            <div>
+                <h2>Payment through UPI</h2>
+                <div class="gw-upi-logo">
+
+                    <i class="fab fa-amazon-pay"></i>
+                    <i class="fab fa-google-wallet"></i>
+                    <i class="fab fa-apple-pay"></i>
+
+                </div>
+                <div class="gw-upi-id">
+
+                    <form action="/buy/upi/@ViewBag.bookId" method="post" id="gw-upi-form">
+                        <input type="text" name="upiID" placeholder="Type your UPI ID">
+                        <button type="submit">Pay</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <footer>
+        <!-- @* <div class="quote">
+            <p>Read on Read.me</p>
+        </div> *@ -->
+        <div>
+            <p><span><i class="fa fa-copyright"></i> </span>Copyright 2021, <span>All rights reserved</span></p>
+        </div>
+    </footer>
+</body>
+</html>
+

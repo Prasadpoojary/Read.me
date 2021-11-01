@@ -1,0 +1,265 @@
+
+
+.success-message, .error-message {
+    z-index: 5;
+    position: absolute;
+    top: 15%;
+    right: 5%;
+    /* background:#0d7c03; */
+    padding: 10px;
+    color: #088f04;
+    background: white;
+    border-radius: 3px;
+    box-shadow: 0px 0px 8px 0px #b6b9b6;
+    min-width: 200px;
+    width: 20vw;
+    max-width: 400px;
+    transition: .3s ease-in-out;
+}
+
+
+    .success-message p, .error-message p {
+        padding-left: 15px;
+    }
+
+        .success-message p span, .error-message p span {
+            padding-right: 10px;
+        }
+
+    .success-message button, .error-message button {
+        position: absolute;
+        cursor: pointer;
+        top: 0px;
+        right: 0px;
+        padding: 10px;
+        padding-bottom: 8px;
+        margin-right: 5px;
+        background: transparent;
+        color: #b3b3b3;
+        outline: none;
+        border: none;
+    }
+
+        .success-message button i, .error-message button i {
+            font-size: 20px;
+        }
+
+.error-message {
+    color: red;
+    background: #b80000;
+    color: white;
+    box-shadow: none;
+}
+
+    .error-message button {
+        color: #ec6c6c;
+    }
+
+    section
+    {
+        margin-top:45px;
+    }
+
+.datasource-container-report
+{
+    display: flex;
+    justify-content: center;
+}
+
+.datasource-container-report ul
+{
+    
+    list-style:none;
+}
+
+ .datasource-container-report ul a
+{
+    text-decoration: none;
+    color:#f8eaea;
+    width:100%;
+    
+    
+} 
+
+.datasource-container-report li
+{
+    margin:10px 0px;
+    background:#8d0404;
+    padding:10px 70px;
+    border-radius: 4px;
+    border:1px solid #8d0404;
+    transition: .3s ease-in-out;
+    position:relative;
+   
+}
+
+
+
+.datasource-container-report span
+{
+    font-size:11px;
+    color: #ff7171;
+    padding-left: 2px;
+}
+.datasource-container-report li:hover
+{
+ 
+   background:#ffffff;
+   color:#960000;
+   border:1px solid #f11919;
+
+}
+
+li.ticket-solved
+{
+    background:green;
+    border:1px solid green;
+}
+
+
+.ticket-solved span
+{
+    color:#5bd65b;
+}
+
+li.ticket-solved:hover
+{
+    color:green;
+    border:1px solid green;
+}
+
+
+
+li.ticket-pending
+{
+    background:#ffc400;
+    border:1px solid #ffc400;
+}
+
+
+.ticket-pending span
+{
+    color:#8d8c8c;
+}
+
+li.ticket-pending:hover
+{
+    color:#ffc400;
+    border:1px solid #ffc400;
+}
+
+.admin-ticket-details div
+{
+   display: flex;
+   padding:10px 50px;
+   justify-content: space-between;
+}
+
+.admin-ticket-details table
+{
+    position: relative;
+    left:50%;
+    transform: translateX(-50%);
+}
+.atd-one h5 
+{
+    color:#e21919;
+}
+
+.admin-ticket-details table h5 span
+{
+  
+    color:#949393;
+}
+
+.admin-ticket-details table td
+{
+    padding-top: 20px;
+}
+.atd-hidden h5
+{
+    visibility: hidden;
+    padding:none;
+}
+
+i.fa-share
+{
+    color:#2e0677;
+}
+
+.atd-three
+{
+    color:#f00000;
+    font-weight: 500;
+    margin-top: 30px;
+}
+
+.atd-three span
+{
+    text-transform: uppercase;
+    color:#606063;
+}
+
+.atd-four
+{
+    color:#000000;
+    font-size: 14px;
+}
+
+.atd-four span
+{
+    text-transform: uppercase;
+    color:#606063;
+}
+
+div.atd-five
+{
+    justify-content: space-around;
+    margin-top: 40px;
+}
+
+div.atd-five a
+{
+    text-decoration: none;
+    padding:10px 30px;
+    background:green;
+    color:#fff;
+    border-radius: 4px;
+    transition: .3s ease-in-out;
+}
+
+
+div.atd-five a:nth-of-type(odd)
+{
+    background:#2e0677;
+}
+
+div.atd-five a:hover
+{
+    background:#111111;
+}
+
+@media screen and (max-width:1000px) 
+{
+
+    .most-valued-container
+    {
+        margin-bottom:30px;
+        padding-bottom: 15px;
+    }
+
+table 
+{
+    display: flex;
+  
+    
+}
+table tr
+{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+}

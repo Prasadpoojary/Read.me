@@ -1,0 +1,39 @@
+.premium-container
+{
+    margin-top: 40px;
+    text-align: center;
+    padding:50px 30px;
+}
+
+.premium-container h3
+{
+    font-size: 23px;
+    color:#6144ca;
+}
+
+.premium-container h3 span
+{
+    color:red;
+    font-size: 35px;
+}
+
+.premium-container div 
+{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.premium-container div p
+{
+    color:#707070;
+}
+
+.contactUs
+{
+    margin-top: 120px;
+    padding:8px 12px;
+    color:#d8cece;
+    background:#242424;
+    border-radius: 4px;
+    text-decoration: none;
+}

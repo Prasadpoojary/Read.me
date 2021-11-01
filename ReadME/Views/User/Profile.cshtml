@@ -1,0 +1,129 @@
+﻿@{
+    Layout = "./../Shared/" + ViewBag.layoutName;
+}
+
+<section class="container">
+    <div class="most-valued-container">
+        <form method="post" action="/edit-user">
+            <a class="profile-edit edit-pen" title="Edit Profile"><i class="fa fa-pen"></i></a>
+            <button class="profile-edit edit-plane" title="Submit Changes" type="submit"><i class="fa fa-paper-plane"></i></button>
+            <div class="profile-container">
+                <h2 class="profile-name"><input type="text" name="username" value="@ViewBag.user.Name" readonly></h2>
+                <p class="profile-email"><input type="text" name="email" value="@ViewBag.user.Email" readonly></p>
+                <div class="profile-action-btn">
+                    <a href="/change-password">Change Password</a>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="premium-container">
+        <div class="profile-left">
+            <h2 class="profile-mainhead">BOOKS</h2>
+            <div class="profile-book-type-container">
+                <div class="profile-uploads">
+                    <h3 class="profile-subhead">Uploads</h3>
+                    <div class="profile-book-mode">
+                        <div class="profile-free">
+                            <h3>@ViewBag.myFreeBooks</h3>
+                            <p>Free</p>
+                        </div>
+                        <div class="profile-paid">
+                            <h3>@ViewBag.myPremiumBooks</h3>
+                            <p>Paid</p>
+                        </div>
+                    </div>
+                    <div class="profile-action-link">
+                        <a href="/upload">Details</a>
+                    </div>
+
+
+                </div>
+                <div class="profile-uploads">
+                    <h3 class="profile-subhead">Enrolled</h3>
+                    <div class="profile-book-mode">
+                        <div class="profile-free">
+                            <h3>@ViewBag.enrolledFreeBooks</h3>
+                            <p>Free</p>
+                        </div>
+
+                        <div class="profile-paid">
+                            <h3>@ViewBag.enrolledPremiumBooks</h3>
+                            <p>Paid</p>
+                        </div>
+                    </div>
+                    <div class="profile-action-link">
+                        @if (ViewBag.enrolledFreeBooks >= ViewBag.enrolledPremiumBooks)
+                        {
+                            <a href="/myenrols/free">Details</a>
+                        }
+                        else
+                        {
+                            <a href="/myenrols/premium">Details</a>
+                        }
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="profile-enrolls">
+                <p><i class="fa fa-check-circle"></i> @(ViewBag.enrolledFreeBooks + ViewBag.enrolledPremiumBooks) Enrollments</p>
+            </div>
+        </div>
+        <div class="profile-middle">
+            <h2 class="profile-mainhead">
+                EARNING</h2>
+                <div>
+                    <h3 class="profile-amount">@ViewBag.user.Earnings</h3>
+                    <br>
+                </div>
+                <div class="profile-action-link">
+                    <br>
+                    <br>
+
+                    <a href="/withdraw">Withdraw</a>
+                </div>
+                <div class="profile-enrolls">
+                    <p><i class="fa fa-check-circle"></i> @ViewBag.subscribersCount Subscribers</p>
+                </div>
+        </div>
+        <div class="profile-right">
+            <h2 class="profile-mainhead">COURSES</h2>
+            <div class="profile-book-type-container">
+                <div class="profile-uploads">
+                    <h3 class="profile-subhead">Uploads</h3>
+                    <div class="profile-book-mode">
+                        <div class="profile-free">
+                            <h3>@ViewBag.myCourse</h3>
+                            <p>&nbsp;</p>
+                        </div>
+
+                    </div>
+                    <div class="profile-action-link">
+                        <a href="/upload">Details</a>
+                    </div>
+
+
+                </div>
+                <div class="profile-uploads">
+                    <h3 class="profile-subhead">Enrolled</h3>
+                    <div class="profile-book-mode">
+                        <div class="profile-free">
+                            <h3>@ViewBag.enrolledCourse</h3>
+                            <p>&nbsp;</p>
+                        </div>
+
+
+                    </div>
+                    <div class="profile-action-link">
+                        <a href="/myenrols/course">Details</a>
+                    </div>
+
+                </div>
+            </div>
+            <div class="profile-enrolls">
+                <p><i class="fa fa-check-circle"></i> @ViewBag.enrolledCourse Enrollments</p>
+            </div>
+        </div>
+
+    </div>
+</section>

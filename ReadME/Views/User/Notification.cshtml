@@ -1,0 +1,46 @@
+@{
+    Layout = "./../Shared/" + ViewBag.layoutName;
+}
+
+
+
+<section class="container">
+    <div class="premium-container">
+        <div class="sub-header">
+            <div class="sub-heading">
+                <h2><span><i class="fa fa-bell"></i></span> Notifications</h2>
+            </div>
+        </div>
+        @using ReadME.Models;; 
+        <div class="All-notifications">
+        @foreach (Notification notification in ViewBag.Notifications)
+        {
+            @if (ViewBag.newNotificationsId.Contains(notification.Id))
+            {
+            <div class="notification newnotify">
+                <div class="newindicator"></div>
+                <p>@notification.Description</p>
+                <span>@notification.TimeStamp</span>
+            </div>
+            }
+
+        }
+
+        @foreach (Notification notification in ViewBag.Notifications)
+        {
+            @if (!ViewBag.newNotificationsId.Contains(notification.Id))
+            {
+                <div class="notification">
+                    <p>@notification.Description</p>
+                    <span>@notification.TimeStamp</span>
+                </div>
+            }
+
+        }
+
+
+
+           
+        </div>
+    </div>
+</section>

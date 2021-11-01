@@ -1,0 +1,45 @@
+﻿
+@{
+    Layout = "./../Shared/" + ViewBag.layoutName;
+
+
+}
+
+@using ReadME.Models;
+
+<section class="container">
+    <div class="premium-container">
+
+        @if (ViewBag.subscribers.Count > 0)
+        {
+            <h2>Subscribers</h2>
+            <div class="subscribers">
+                @foreach (User user in ViewBag.subscribers)
+                {
+                    <a href="/portfolio/@user.Id/premium">
+                        <div class="subscriber">
+
+                            <div class="subscriber-name">
+                                <h5>@user.Name</h5>
+                            </div>
+                            <div class="subscriber-email">
+                                <p>@user.Email</p>
+                            </div>
+
+                        </div>
+                    </a>
+                }
+            </div>
+        }
+        else
+        {
+            <div class="emptyCont">
+                <div class="eiCross">
+                    <i class="fa fa-times" style="color:#dfdfdf;font-size:42px;padding:15px 23px;border-radius: 50%;border:3px solid #dfdfdf;"></i>
+                </div>
+                <p class="eiMain">No Subscribers Found</p>
+                <p class="eiSub">When somebody subscribed to you then you can see them here.</p>
+            </div>
+        }
+    </div>
+</section>

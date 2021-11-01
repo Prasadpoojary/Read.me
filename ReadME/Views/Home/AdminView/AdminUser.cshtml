@@ -1,0 +1,204 @@
+﻿@{ Layout = null;}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read.me</title>
+    <link rel="stylesheet" href="~/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="~/css/adminStyle.css">
+    <link rel="icon" href="~/assets/icon.png" type="image/png">
+
+    <script src="~/js/jquery.js"></script>
+    <script src="~/js/animation.js"></script>
+</head>
+<body>
+    <div class="layer"></div>
+    <header>
+
+        <div class="main-menu">
+            <button class="mobile-menu"><i class="fa fa-bars"></i></button>
+            <h1><span><i class="fa fa-dice-d6"></i> </span>Read.me</h1>
+
+            <nav>
+                <button class="close-nav"><i class="fa fa-times"></i></button>
+                <ul>
+                    <a href="/admin" class="homeNav">
+                        <li><i class="fa fa-home"></i> Home</li>
+                        <div class="hover active"></div>
+                    </a>
+
+                    @if (ViewBag.admin.isSuperuser == true)
+                    {
+                        <a href="/admin/manage" class="eduHubNav">
+                            <li><i class="fa fa-cogs"></i> Manage</li>
+                            <div class="hover"></div>
+                        </a>
+                    }
+
+
+                    @if (ViewBag.admin.access_report == true)
+                    {
+                        <a href="/admin/reports" class="eduHubNav">
+                            <li><i class="fa fa-ban"></i> Reports</li>
+                            <div class="hover"></div>
+                        </a>
+                    }
+
+                    @if (ViewBag.admin.access_ticket == true)
+                    {
+                        <a href="/admin/tickets" class="eduHubNav">
+                            <li><i class="fa fa-exclamation-triangle"></i> Tickets</li>
+                            <div class="hover"></div>
+                        </a>
+                    }
+
+                    <a href="/admin/logout" class="free-nav">
+                        <li><span><i class="fa fa-power-off"></i></span></li>
+                    </a>
+                </ul>
+            </nav>
+
+        </div>
+        <div class="search">
+            <div class="search-bar">
+                <input type="text" placeholder="Discover Data" />
+                <a href=""><i class="fa fa-search"></i></a>
+            </div>
+        </div>
+
+
+        @if (@ViewBag.message != null && @ViewBag.message == true)
+        {
+            @if (@ViewBag.success != null)
+            {
+                <div class="success-message">
+                    <p><span><i class="fa fa-check-circle"></i></span>@ViewBag.success</p><button><i class="fa fa-times"></i></button>
+                </div>
+            }
+
+            @if (@ViewBag.error != null)
+            {
+                <div class="error-message">
+                    <p><span><i class="fa fa-ban"></i></span>@ViewBag.error</p><button><i class="fa fa-times"></i></button>
+                </div>
+            }
+
+        }
+
+    </header>
+
+    <section class="container">
+       
+        <div class="most-valued-container">
+            <div class="sub-header">
+                <div class="sub-heading">
+                    <h2><span><i class="fa fa-database"></i></span> Data Source</h2>
+                </div>
+            </div>
+            <div class="datasource-container">
+                <ul>
+
+
+                    @if (ViewBag.admin.access_user == true)
+                    {
+                        <a class="dc-table" href="/admin/users">
+                            <li class="ds">Users</li>
+                        </a>
+                    }
+
+                    @if (ViewBag.admin.access_book == true)
+                    {
+                        <a href="/admin/books">
+                            <li class="ds">Books</li>
+                        </a>
+                    }
+
+                    @if (ViewBag.admin.access_course == true)
+                    {
+                        <a href="/admin/courses">
+                            <li class="ds">Courses</li>
+                        </a>
+                    }
+
+                    @if (ViewBag.admin.access_comment == true)
+                    {
+                        <a href="/admin/comments">
+                            <li class="ds">Comments</li>
+                        </a>
+                    }
+
+                    @if (ViewBag.admin.access_payment == true)
+                    {
+                        <a href="/admin/payments">
+                            <li class="ds">Payments</li>
+                        </a>
+                    }
+
+                    @if (ViewBag.admin.access_subscriber == true)
+                    {
+                        <a href="/admin/subscribers">
+                            <li class="ds">Subscribers</li>
+                        </a>
+                    }
+
+                    <a href="/admin/category">
+                        <li class="ds">Category</li>
+                    </a>
+
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="premium-container">
+            <div class="admin-sub-header sub-header">
+                <div class="sub-heading">
+                    <h2><span><i class="fa fa-globe"></i></span> Records</h2>
+                </div>
+                <div class="sort-by-cat">
+                    <input type="search" value="" placeholder="Choose Table " name="" list="searchDataCont">
+
+                    <datalist id="searchDataCont">
+                        <option value="User"></option>
+                        <option value="Book"></option>
+                        <option value="Course"></option>
+                        <option value="Category"></option>
+                        <option value="Subscriber"></option>
+                        <option value="Comment"></option>
+                    </datalist>  
+                </div>
+                <div class="sort-by">
+                    <input type="search" value="" placeholder="Sort by" name="" list="sortDataCont">
+
+                    <datalist id="sortDataCont">
+                        
+                    </datalist>
+                </div> 
+                <button><img class="send-icon" src="../assets/Daco_4370644.png" /></button>
+            </div>
+            <div class="record-container">
+                <ul>
+
+                    @using ReadME.Models;
+                    @foreach (User user in ViewBag.users)
+                    {
+                        <li class="rc"><a href="/portfolio/@user.Id/premium" target="_blank"><span>@user.Id. </span>@user.Name  -  @user.Email</a><a href="/admin/delete/user/@user.Id?redirect=/admin/users" title="Delete"><i class="fa fa-trash-alt"></i></a></li>
+
+                    }
+                </ul>
+            </div>
+        </div>
+    </section>
+    <footer>
+       
+        <div>
+             <p><span> </span>Stay secured, <span>Keep Growing</span></p>
+        </div>
+    </footer>
+ </body>
+ </html>
+ 

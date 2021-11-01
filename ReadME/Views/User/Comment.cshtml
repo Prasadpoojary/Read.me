@@ -1,0 +1,80 @@
+@{
+    Layout = "./../Shared/" + ViewBag.layoutName;
+}
+<section class="container">
+
+    <div class="most-valued-container">
+
+        <div class="book-container">
+            <div class="book-card">
+
+                <div class="book-heading">
+                    <h3>
+                        @ViewBag.book.Name
+                    </h3>
+                    <div class="book-author">
+                        - @ViewBag.book.Author
+                    </div>
+                </div>
+                <div class="book-thumbnail">
+                    <img src="~/@ViewBag.book.ThumbnailPath" alt="">
+                    @if (ViewBag.book.IsPremium)
+                    {
+                        <h4>Rs. <span>@ViewBag.book.Price</span></h4>
+                    }
+                    else
+                    {
+                        <h4>  Free<span></span></h4>
+                    }
+                </div>
+                <div class="book-checkout">
+                    <a href="/read/@ViewBag.book.Id">Read Now</a>
+                </div>
+                <div class="book-spec">
+                    <div class="book-likes">
+                        <p>@ViewBag.book.Likes</p>
+
+                        @if (ViewBag.isLiked)
+                        {
+                            <a href="/like/@ViewBag.book.Id?redirect=/comment/book/@ViewBag.book.Id">
+                                <i class="fa fa-heart" style="color: #d41313;"></i>
+                            </a>
+                        }
+                        else
+                        {
+                            <a href="/like/@ViewBag.book.Id?redirect=/comment/book/@ViewBag.book.Id">
+                                <i class="fa fa-heart"></i>
+                            </a>
+                        }
+                    </div>
+                    <div class="book-views">
+                        <p>@ViewBag.book.Readers</p>
+                        <a href="">
+                            <i class="fa fa-eye"></i>
+                        </a>
+                    </div>
+                    <div class="book-feadback">
+                        <p>@ViewBag.book.Comments</p>
+                        <a href="/comment/book/@ViewBag.book.Id?redirect=checkout/book/@ViewBag.book.Id">
+                            <i class="fa fa-comments"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="premium-container">
+        <h2>Write something about this Book</h2>
+        <div class="ticket-form">
+            <form action="/comment/book/@ViewBag.book.Id?redirect=@ViewBag.redirect" method="post" id="user-ticket-form">
+                <div class="textarea-holder">
+                    <textarea placeholder="Let us know your opinion..." name="commenttext" id="" cols="30" rows="10"></textarea>
+                    <p class="textarea-count">
+                        <span class="textarea-len">0</span> of 500
+                    </p>
+                </div>
+                <button>Send</button>
+            </form>
+        </div>
+    </div>
+</section> 

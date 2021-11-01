@@ -1,0 +1,228 @@
+@{
+    Layout = "../../Shared/" + ViewBag.layoutName;
+}
+
+<section class="container">
+    <div class="premium-container">
+        <div class="sub-header">
+            <div class="sub-heading">
+                <h2><span><i class="fa fa-layer-group"></i></span> Course</h2>
+            </div>
+            <div class="sort-by-cat">
+                <input type="search" value="" placeholder="Category" name="" list="searchDataCont">
+
+                <datalist id="searchDataCont">
+
+                    @foreach (string category in ViewBag.categories)
+                    {
+                        <option value="@category"></option>
+                    }
+
+                </datalist>
+            </div>
+            <div class="sort-by">
+                <input type="search" value="" placeholder="Sort by" name="" list="sortDataCont">
+
+                <datalist id="sortDataCont">
+                  
+                    <option value="Popular"></option>
+                    <option value="Relevant"></option>
+
+                    <option value="Language"></option>
+                   
+
+
+                </datalist>
+            </div>
+            <button><img class="send-icon" src="~/assets/Daco_4370644.png" /></button>
+        </div>
+        <div class="book-container">
+            @using ReadME.Models;
+            @foreach (Course course in ViewBag.AllCourses)
+            {
+                <div class="book-card">
+                    <div class="more">
+                        <button><span><i class="fa fa-ellipsis-v"></i></span></button>
+                    </div>
+                    <div class="card-layer"></div>
+                    <div class="more-options">
+                        <ul>
+                            @if (ViewBag.savedItems.Contains(course.Id))
+                            {
+                                <a href="/unsave/course/@course.Id?redirect=/edu-hub">
+                                    <li><span><i class="fa fa-bookmark"></i></span> Unsave</li>
+                                </a>
+                            }
+                            else
+                            {
+                                <a href="/save/course/@course.Id?redirect=/edu-hub">
+                                    <li><span><i class="fa fa-bookmark"></i></span> Save</li>
+                                </a>
+                            }
+                            <li>
+                                <button><span><i class="fa fa-share"></i></span> Share</button>
+                            </li>
+
+                            <a href="/report/course/@course.Id?redirect=/edu-hub">
+                                <li><span><i class="fa fa-ban"></i></span> Report</li>
+                            </a>
+                            <a href="/similar/course/@course.Id">
+                                <li><span><i class="fa fa-th"></i></span> Similar</li>
+                            </a>
+                        </ul>
+                    </div>
+                    <div class="book-heading">
+                        <h3>
+                            @course.Name
+                        </h3>
+                        <div class="book-author">
+                            - @course.Source
+                        </div>
+                    </div>
+                    <div class="book-thumbnail">
+                        <img src="~/@course.ThumbnailPath" alt="">
+
+                        <div class="book-price-cont">
+                            <h4>  Free<span></span></h4>
+                            <p class="book-language">@course.Language</p>
+                        </div>
+
+
+                    </div>
+                    <div class="book-checkout">
+                        <a href="/checkout/course/@course.Id">Checkout</a>
+                    </div>
+                    <div class="book-spec">
+                        <div class="book-likes">
+                            <p>@course.Likes</p>
+                            @if (ViewBag.likedItems.Contains(course.Id))
+                            {
+                                <a href="/like/course/@course.Id?redirect=/edu-hub">
+                                    <i class="fa fa-heart" style="color: #d41313;"></i>
+                                </a>
+                            }
+                            else
+                            {
+                                <a href="/like/course/@course.Id?redirect=/edu-hub">
+                                    <i class="fa fa-heart"></i>
+                                </a>
+                            }
+                        </div>
+                        <div class="book-views">
+                            <p>@course.Readers</p>
+                            <a href="">
+                                <i class="fa fa-eye"></i>
+                            </a>
+                        </div>
+                        <div class="book-feadback">
+                            <p>@course.Comments</p>
+                            <a href="/comment/course/@course.Id?redirect=/edu-hub">
+                                <i class="fa fa-comments"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+    </div>
+    <div class="most-valued-container">
+        <div class="sub-header">
+            <div class="sub-heading">
+                <h2><span><i class="fa fa-chess-queen"></i></span> Suggestions</h2>
+            </div>
+            <div class="edit-suggestion">
+               
+                    <a href="edit-suggestion/?redirect=/edu-hub">Edit <i class="fa fa-pen"></i></a>
+              
+            </div>
+        </div>
+        <div class="book-container">
+           
+                @foreach (Course course in ViewBag.suggestions)
+                {
+                    <div class="book-card">
+                        <div class="more">
+                            <button><span><i class="fa fa-ellipsis-v"></i></span></button>
+                        </div>
+                        <div class="card-layer"></div>
+                        <div class="more-options">
+                            <ul>
+                                @if (ViewBag.savedItems.Contains(course.Id))
+                                {
+                                    <a href="/unsave/course/@course.Id?redirect=/edu-hub">
+                                        <li><span><i class="fa fa-bookmark"></i></span> Unsave</li>
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a href="/save/course/@course.Id?redirect=/edu-hub">
+                                        <li><span><i class="fa fa-bookmark"></i></span> Save</li>
+                                    </a>
+                                }
+
+                                <li>
+                                    <button><span><i class="fa fa-share"></i></span> Share</button>
+                                </li>
+
+                                <a href="">
+                                    <li><span><i class="fa fa-ban"></i></span> Report</li>
+                                </a>
+                                <a href="">
+                                    <li><span><i class="fa fa-th"></i></span> Similar</li>
+                                </a>
+                            </ul>
+                        </div>
+                        <div class="book-heading">
+                            <h3>
+                                @course.Name
+                            </h3>
+                            <div class="book-author">
+                                - @course.Source
+                            </div>
+                        </div>
+                        <div class="book-thumbnail">
+                            <img src="~/@course.ThumbnailPath" alt="">
+                          
+                                <div class="book-price-cont">
+                                    <h4>  Free<span></span></h4>
+                                    <p class="book-language">@course.Language</p>
+                                </div>
+                            
+
+
+                        </div>
+                        <div class="book-checkout">
+                            <a href="checkout/course/@course.Id">Checkout</a>
+                        </div>
+                        <div class="book-spec">
+                            <div class="book-likes">
+                             
+                                        <a href="/like/@course.Id?redirect=/edu-hub">
+                                            <i class="fa fa-heart"></i>
+                                        </a>
+                            
+                            </div>
+                            <div class="book-views">
+                                <p>@course.Readers</p>
+                                <a href="">
+                                    <i class="fa fa-eye"></i>
+                                </a> 
+                            </div>
+                            <div class="book-feadback">
+                                <p>@course.Comments</p>
+                               
+                                    <a href="/comment/course/@course.Id?redirect=/edu-hub">
+                                        <i class="fa fa-comments"></i>
+                                    </a>
+                                
+
+                            </div>
+                        </div>
+                    </div>
+                }
+            
+          
+        </div>
+    </div>
+</section>

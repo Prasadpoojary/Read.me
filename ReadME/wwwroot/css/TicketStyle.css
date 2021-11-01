@@ -1,0 +1,71 @@
+.container
+{
+    margin-top: 50px;
+}
+
+.container h2{
+    text-align: center;
+    margin-top: 20px;
+    color:#543be2;
+    font-size: 20px;
+}
+
+.ticket-form
+{
+    text-align: center;
+}
+.ticket-form textarea
+{
+    max-width: 600px;
+    width:80vw;
+    margin-top: 30px;
+    border-radius: 5px;
+    resize: none;
+    border:1px solid #a4a6ad;
+    outline:none;
+    padding:20px;
+    transition: .3s ease-in-out;
+    border-radius: 10px;
+    
+}
+
+.ticket-form textarea::-webkit-input-placeholder
+{
+    color:#b9b3da;
+}
+
+.ticket-form textarea:focus
+{
+    border:1px solid #543be2;
+}
+
+.ticket-form button
+{
+    margin-top: 8px;
+    padding: 11px 32px;
+    background:#300daf;
+    color:white;
+    border-radius: 5px;
+    transition: .4s ease-in-out;
+    outline:none;
+    border:none;
+    cursor: pointer;
+
+}
+
+.ticket-form button:hover
+{
+    background:#252525;
+}
+
+
+
+.textarea-count
+{
+    margin-left: 200px;
+    font-size: 12px;
+    font-weight: 500;
+    color:#159704;
+}
+
+

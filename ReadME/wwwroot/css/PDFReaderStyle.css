@@ -1,0 +1,51 @@
+
+.container
+{
+    margin-top: 40px;
+    text-align: center;
+    
+}
+
+.top-bar {
+    background:#fff;
+    box-shadow: 0px 0px 12px 0px #ececec;
+    color: #fff;
+    margin-top: 20px;
+    border-radius: 10px;
+    padding: 1rem;
+    text-align:center;
+  }
+  
+  .btn {
+    background: #6144e2;
+    color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 0.7rem 2rem;
+  }
+  
+  .btn:hover {
+    opacity: 0.9;
+  }
+  
+  .page-info {
+    margin: 30px;
+    font-size: 13px;
+    color:#000;
+  }
+  
+  .error {
+    background: orangered;
+    color: #fff;
+    padding: 1rem;
+  }
+  
+  #pdf-render
+  {
+      margin-top: 20px;
+      
+
+  }
+

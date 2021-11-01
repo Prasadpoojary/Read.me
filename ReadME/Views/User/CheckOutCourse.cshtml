@@ -1,0 +1,137 @@
+@{
+    Layout ="./../Shared/"+ViewBag.layoutName;
+}
+
+    <section class="container">
+        <div class="most-valued-container">
+            
+           <div class="co-uploader">
+               <p>Uploaded by</p>
+               <h4>@ViewBag.UploaderName</h4>
+               <a href="/portfolio/@ViewBag.course.Uploader/course">Goto Portfolio</a>
+               <div class="co-subscribe">
+                   @if (ViewBag.selfUpload == false)
+                   {
+                       @if (ViewBag.isSubscribed)
+                       {
+                           <a href="/subscribe/@ViewBag.course.Uploader?redirect=/checkout/course/@ViewBag.course.Id"
+                              title="You won't be notified when this uploader's BOOK is uploaded"
+                              class="subscribe" style="background:red;">Unsubscribe</a>
+                       }
+                       else
+                       {
+                           <a href="/subscribe/@ViewBag.course.Uploader?redirect=/checkout/course/@ViewBag.course.Id"
+                              title="Subscribe to this Uploader to be notified when the BOOK is uploaded"
+                              class="subscribe">Subscribe</a>
+                       }
+
+                   }
+
+                   <span>
+                       <i class="fa fa-check-circle"></i> @ViewBag.subscriberCount subscribers
+                   </span>
+               </div>
+               <div class="co-ticket">
+                   <p>Facing any issues ?<a href="/ticket/@ViewBag.course.Id?redirect=/checkout/course/@ViewBag.course.Id">Raise a Ticket</a></p>
+               </div>
+               
+           </div>
+               
+        </div>
+        <div class="premium-container">
+          
+            <div class="co-details">
+                <h4>@ViewBag.course.Name</h4>
+                <div class="co-author">
+                    <p><span>-</span> @ViewBag.course.Source</p>
+                </div>
+                
+                <div class="co-img-desc">
+                    <div class="co-img">
+                        <img src="~/@ViewBag.course.ThumbnailPath" alt="Book-thumbnail">
+                        <div class="book-spec">
+                            <div class="book-likes">
+                                <p>@ViewBag.course.Likes</p>
+                                @if (ViewBag.isLiked)
+                                {
+                                    <a href="/like/course/@ViewBag.course.Id?redirect=/checkout/course/@ViewBag.course.Id">
+                                        <i style="color: #d41313;" class="fa fa-heart"></i>
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a href="/like/course/@ViewBag.course.Id?redirect=/checkout/course/@ViewBag.course.Id">
+                                        <i class="fa fa-heart"></i>
+                                    </a>
+                                }
+
+                            </div>
+                            <div class="book-views">
+                                <p>@ViewBag.course.Readers</p>
+                                <a href="">
+                                    <i class="fa fa-eye"></i>
+                                </a>
+                            </div>
+                            <div class="book-feadback">
+                                <p>@ViewBag.course.Comments</p>
+                                <a href="/comment/course/@ViewBag.course.Id?redirect=/checkout/course/@ViewBag.course.Id">
+                                    <i class="fa fa-comments"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="co-desc">
+                        <p>
+                            @ViewBag.course.Description
+                        </p>
+                        @if (ViewBag.isOwnCourse || ViewBag.selfUpload)
+                        {
+
+                            <div class="co-button">
+                                <a href="@ViewBag.course.URL" target="_blank"> View <span></span></a>
+                            </div>
+                        }
+                        else
+                        {
+                          
+                    <div class="co-button">
+                        <a href="/launch/@ViewBag.course.Id">Launch <span>Free</span></a>
+                        @if (ViewBag.isSaved)
+                        {
+                            <a href="/unsave/course/@ViewBag.course.Id?redirect=/checkout/course/@ViewBag.course.Id" title="Course will be removed from Saved Courses" class="co-save"><i class="fa fa-bookmark"></i> Unsave</a>
+
+                        }
+                        else
+                        {
+                            <a href="/save/course/@ViewBag.course.Id?redirect=/checkout/course/@ViewBag.course.Id" title="Save this Course for Future" class="co-save"><i class="fa fa-bookmark"></i> Save</a>
+
+                        }
+                    </div>
+                            
+
+                        }
+
+
+                    </div>
+                </div>
+               
+            </div>
+            
+            <div class="co-comments-cont" id="commentSectionPoint">
+                @using ReadME.Models;
+
+                @foreach (Comment comment in ViewBag.comments)
+                {
+                    <div class="co-comment">
+                        <p>@comment.Review</p>
+                        <div class="co-comment-from">
+                            <p>- @comment.Name</p>
+                            <span>@comment.TimeStamp</span>
+                        </div>
+                    </div>
+                }
+            </div>
+           
+        </div>
+       
+    </section>

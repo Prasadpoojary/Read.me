@@ -1,0 +1,152 @@
+@{
+    Layout ="./../Shared/"+ViewBag.layoutName;
+}
+
+<section class="container">
+
+    <div class="premium-container">
+        @if (ViewBag.books.Count > 0)
+        {
+            <div class="sub-header">
+                <div class="sub-heading">
+                    <h2><span><i class="fa fa-layer-group"></i></span> Free Books</h2>
+                </div>
+                <div class="sort-by-cat">
+                    <input type="search" value="" placeholder="Category" name="" list="searchDataCont">
+
+                    <datalist id="searchDataCont">
+                        @foreach (string category in ViewBag.categories)
+                        {
+                            <option value="@category"></option>
+
+                        }
+                    </datalist>
+                </div>
+                <div class="sort-by">
+                    <input type="search" value="" placeholder="Sort by" name="" list="sortDataCont">
+
+                    <datalist id="sortDataCont">
+                        <option value="Popular"></option>
+                        <option value="Relevant"></option>
+
+                        <option value="Language"></option>
+                    </datalist>
+                </div>
+                <button><img class="send-icon" src="./../../assets/Daco_4370644.png" /></button>
+            </div>
+            <div class="book-container">
+                @using ReadME.Models;
+                @foreach (Book book in ViewBag.books)
+                {
+                    <div class="book-card">
+                        <div class="more">
+                            <button><span><i class="fa fa-ellipsis-v"></i></span></button>
+                        </div>
+                        <div class="card-layer"></div>
+                        <div class="more-options">
+                            <ul>
+                                @if (ViewBag.savedItems.Contains(book.Id))
+                                {
+                                    <a href="/unsave/book/@book.Id?redirect=/portfolio/@book.Uploader/free">
+                                        <li><span><i class="fa fa-bookmark"></i></span> Unsave</li>
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a href="/save/book/@book.Id?redirect=/portfolio/@book.Uploader/free">
+                                        <li><span><i class="fa fa-bookmark"></i></span> Save</li>
+                                    </a>
+                                }
+
+                                <li>
+                                    <button><span><i class="fa fa-share"></i></span> Share</button>
+                                </li>
+
+                                <a href="/report/@book.Id?redirect=/portfolio/@book.Uploader/free">
+                                    <li><span><i class="fa fa-ban"></i></span> Report</li>
+                                </a>
+                                <a href="/similar/@book.Id">
+                                    <li><span><i class="fa fa-th"></i></span> Similar</li>
+                                </a>
+                            </ul>
+                        </div>
+                        <div class="book-heading">
+                            <h3>
+                                @book.Name
+                            </h3>
+                            <div class="book-author">
+                                - @book.Author
+                            </div>
+                        </div>
+                        <div class="book-thumbnail">
+                            <img src="~/@book.ThumbnailPath" alt="">
+                            @if (book.IsPremium)
+                            {
+                                <h4> Free<span></span></h4>
+                            }
+                            else
+                            {
+                                <h4>  Free<span></span></h4>
+                            }
+
+                        </div>
+                        <div class="book-checkout">
+                            <a href="read/book/@book.Id">Checkout</a>
+                        </div>
+                        <div class="book-spec">
+                            <div class="book-likes">
+                                <p>@book.Likes</p>
+
+                                @if (ViewBag.likedItems.Contains(book.Id))
+                                {
+                                    <a href="/like/@book.Id?redirect=/portfolio/@book.Uploader/free">
+                                        <i class="fa fa-heart" style="color: #d41313;"></i>
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a href="/like/@book.Id?redirect=/portfolio/@book.Uploader/free">
+                                        <i class="fa fa-heart"></i>
+                                    </a>
+                                }
+                            </div>
+                            <div class="book-views">
+                                <p>@book.Readers</p>
+                                <a href="">
+                                    <i class="fa fa-eye"></i>
+                                </a>
+                            </div>
+                            <div class="book-feadback">
+                                <p>@book.Comments</p>
+                                <a href="/comment/book/@book.Id?redirect=/portfolio/@book.Uploader/freee">
+                                    <i class="fa fa-comments"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <div class="emptyCont">
+                <div class="eiCross">
+                    <i class="fa fa-times" style="color:#dfdfdf;font-size:42px;padding:15px 23px;border-radius: 50%;border:3px solid #dfdfdf;"></i>
+                </div>
+                <p class="eiMain">No Books Found</p>
+                <p class="eiSub">When Free book is uploaded you can see them here.</p>
+            </div>
+        }
+    </div>
+
+    <div class="most-valued-container"  style="max-height: 300px;">
+        <div class="my-items-cat">
+            <ul>
+                <a href="/portfolio/@ViewBag.uploaderId/premium"><li class="my-items-cat-one">Premium Books</li></a>
+                <a href="/portfolio/@ViewBag.uploaderId/free"><li class="my-items-cat-two">Free Books</li></a>
+                <a href="/portfolio/@ViewBag.uploaderId/course"><li class="my-items-cat-three">Courses</li></a>
+            </ul>
+        </div>
+
+    </div>
+</section>

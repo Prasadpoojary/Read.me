@@ -1,0 +1,454 @@
+*
+{
+    margin:0px;
+    padding:0px;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+
+.success-message, .error-message {
+    z-index: 5;
+    position: absolute;
+    top: 15%;
+    right: 5%;
+    /* background:#0d7c03; */
+    padding: 10px;
+    color: #088f04;
+    background: white;
+    border-radius: 3px;
+    box-shadow: 0px 0px 8px 0px #b6b9b6;
+    min-width: 200px;
+    width: 20vw;
+    max-width: 400px;
+    transition: .3s ease-in-out;
+}
+
+
+    .success-message p, .error-message p {
+        padding-left: 15px;
+    }
+
+        .success-message p span, .error-message p span {
+            padding-right: 10px;
+        }
+
+    .success-message button, .error-message button {
+        position: absolute;
+        cursor: pointer;
+        top: 0px;
+        right: 0px;
+        padding: 10px;
+        padding-bottom: 8px;
+        margin-right: 5px;
+        background: transparent;
+        color: #b3b3b3;
+        outline: none;
+        border: none;
+    }
+
+        .success-message button i, .error-message button i {
+            font-size: 20px;
+        }
+
+.error-message {
+    color: red;
+    background: #b80000;
+    color: white;
+    box-shadow: none;
+}
+
+    .error-message button {
+        color: #ec6c6c;
+    }
+
+
+/* body
+{
+    background:url("../assets/bg1.jpg");
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+} */
+
+
+header
+{
+    display:flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding:10px;
+}
+
+div.layer
+{
+    position:fixed;
+    top:0px;
+    left:0px;
+    right:0px;
+    z-index: -1;
+    bottom:0px;
+    background:rgba(255, 255, 255, 0.932);
+}
+
+.main-menu
+{
+    width:100vw;
+    display:flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.main-menu nav
+{
+    width:50vw;
+    display:block;
+
+}
+
+.main-menu ul
+{
+    
+    list-style:none;
+    display:flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.main-menu h1
+{
+    color:#8d79eb;
+}
+
+.main-menu h1 span
+{
+    color:#aaa9ad;
+}
+
+nav ul a
+{
+    text-decoration: none;
+    color:#000;
+    transition: .5s ease-in-out;
+    font-weight: 500;
+}
+
+
+
+
+nav ul a div
+{
+    background: #8d79eb;
+    width:0px;
+    transition: .5s ease-in-out;
+    position: absolute;
+    margin-top: 5px;
+    height:5px;
+    border-radius: 100px;
+ 
+}
+
+.loginNav .active
+{
+    width:41px;
+}
+
+
+.search
+{
+    display: none;
+
+    
+}
+
+/* container */
+
+
+
+
+
+/* login Container */
+
+.container{
+    position: absolute;
+    margin-top: 30px;
+    left:50%;
+    transform: translateX(-50%);
+    padding:30px;
+    box-shadow: 0px 0px 10px 1px #dbdbdb;
+    border-radius: 20px;
+    min-width:300px;
+    width:50vw;
+    max-width: 450px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    
+}
+
+.admin-login
+{
+    top:17%;
+}
+
+.container h2
+{
+    color:#646464;
+}
+
+
+
+
+.loginForm
+{
+    margin-top: -30px;
+}
+
+.container .wrapper{
+    position: relative;
+    height:80px;
+    
+}
+
+.wrapper label{
+    position: absolute;
+    top:35px;
+    font-size: 12px;
+    left:18%;
+    /* transform: translateX(-50%); */
+    color:#a5a5a5e7;
+    transition: .3s ease-in-out;
+}
+.container form{
+    margin-top: 30px;
+}
+
+.wrapper input[type="text"],.wrapper input[type="password"]{
+    position: absolute;
+    width:250px;
+    top:39%;
+    left:50%;
+    transform: translateX(-50%);
+    padding:5px 10px;
+    border:none;
+    outline:none;
+    border-bottom: 2px solid #7c64d3;
+}
+.wrapper input:focus{
+    border-bottom: 1px solid #0a018546;
+}
+
+
+input:focus ~ label,
+input:valid ~ label{
+    color:#494949;
+   top:14px;
+   font-size:12px;
+   font-weight: 500;
+}
+
+
+.logo{
+    position:absolute;
+    right:20%;
+    top:30%;
+    background:transparent;
+    border:none;
+    outline:none;
+    color:#585858;
+    font-size: 16px;
+    cursor: pointer;
+}
+.offLogo{
+    display: none;
+}
+
+
+
+ .login-btn-wrapper
+{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    list-style: none;
+    width:250px;
+    
+}
+
+
+.submitWrapper input[type="submit"]
+{
+    background:#2d037c;
+    border:1px solid transparent;
+    color:white;
+    width:100px;
+    border-radius: 2px;
+    cursor: pointer;
+    padding:8px 12px;
+    transition: .3s ease-in-out;
+}
+/* 2d037c 272727 */
+.wrapper input[type="submit"]:hover,.signupSubmitWrapper input[type="submit"]:hover{
+    background:#272727;
+    color:#ffffff;
+    
+    
+}
+
+.submitWrapper
+{
+    display:flex;
+    justify-content: center;
+}
+
+
+
+
+
+.close-nav, .mobile-menu
+{
+    display:none;
+}
+
+.forgotpass {
+    text-decoration: none;
+    color: #292929;
+    font-size: 12px;
+}
+
+
+
+@media screen and (max-width:650px) 
+{
+
+.wrapper input
+{
+   
+    width:210px;
+}
+.wrapper label
+{
+    
+    left:0px;
+}
+
+}
+
+
+
+@media screen and (max-width:1000px) 
+{
+
+
+
+header nav
+{
+   width:100vw;
+
+}
+
+
+
+
+.main-menu nav
+{
+    display: none;
+}
+.close-nav
+{
+    color:white;
+    position: absolute;
+    z-index: 3;
+    background:transparent;
+    outline:none;
+    top:10vh;
+    left:50%;
+    transform: translateX(-50%);
+    font-size: 30px;
+    width:60px;
+    height:60px;
+    border:1px solid #fff;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.main-menu nav
+{
+    width:100vw;
+    height:100vh;
+    position:absolute;
+    top:0px;
+    background: #000000f6;
+    z-index: 9;
+   
+
+}
+
+.main-menu ul
+{
+    
+    list-style:none;
+    color:#353131;
+    display:flex;
+    height:70vh;
+    align-items: bottom;
+    margin-top: 20vh;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    z-index: 9;
+   
+}
+
+.main-menu ul li 
+{
+    width:100vw;
+    margin: 0px;
+    text-align: center;
+}
+
+.main-menu ul a
+{
+    color:white;
+}
+
+.main-menu ul a:hover{
+    color:#a8a8a8;
+}
+
+.main-menu ul a div.hover
+{
+    display: none;
+}
+
+
+
+
+.mobile-menu
+{
+    display: block;
+    position: absolute;
+    left:30px;
+    border:none;
+    outline:none;
+    background:transparent;
+    font-size: 30px;
+    cursor: pointer;
+    color:#292929;
+}
+
+
+
+body
+{
+    height:120vh;
+}
+
+
+
+
+
+}
+

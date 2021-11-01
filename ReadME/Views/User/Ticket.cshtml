@@ -1,0 +1,20 @@
+ @{
+    Layout = "./../Shared/" + ViewBag.layoutName;
+}
+
+    <section class="container">
+        <div class="premium-container">
+            <h2>Post Your issue</h2>
+            <div class="ticket-form">
+                <form action="/ticket/@ViewBag.resourceId?redirect=@ViewBag.redirect" method="post" id="user-ticket-form">
+                    <div class="textarea-holder">
+                        <textarea placeholder="Let us know your Problem..."  name="description" id="" cols="30" rows="10"></textarea>
+                        <p class="textarea-count">
+                            <span class="textarea-len">0</span> of 500
+                        </p>
+                    </div>
+                    <button>Submit</button>
+                </form>
+            </div>
+        </div>
+    </section>

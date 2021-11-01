@@ -1,0 +1,154 @@
+ @{
+    Layout ="./../Shared/"+ViewBag.layoutName;
+}
+
+@using ReadME.Models; 
+
+ <section class="container">
+       
+     <div class="most-valued-container">
+         <div class="sub-header">
+             <div class="sub-heading">
+                 <h2><span><i class="fa fa-flag-checkered"></i></span> Uploads</h2>
+             </div>
+         </div>
+         @if (ViewBag.uploadedFreeBooks?.Count > 0 || ViewBag.uploadedPremiumBooks?.Count > 0 || ViewBag.uploadedCourses?.Count > 0)
+         {
+     <div class="uploads-container">
+         @if (ViewBag.uploadedPremiumBooks?.Count > 0)
+         {
+
+             <div class="uc-main">
+                 <div class="uc-main-header">
+                     <p>Premium</p>
+                 </div>
+
+                 @foreach (Book book in ViewBag.uploadedPremiumBooks)
+                 {
+                     <div class="uc-content">
+                         <div class="totalEnrollment">
+                             <p>@book.Readers Enrollments</p>
+                             <div class="totalEn-pointer"></div>
+                         </div>
+                         <div class="uc-content-head">
+                             <div>
+                                 <p>@book.Name</p>
+                             </div>
+                             <a href="/edit/book/premium/@book.Id" title="edit this book"><i class="fa fa-pen"></i></a>
+                         </div>
+                         <div class="uc-content-tail">
+                             <a>@string.Format("{0:MMM dd, yyyy}", book.UploadTime)</a>
+                             <a class="uc-content-price"><i class="fa fa-rupee-sign"></i> @book.Price</a>
+                             <a href="/delete/book/@book.Id" class="uc-content-delete"><i class="fa fa-trash-alt"></i> Delete</a>
+                         </div>
+                     </div>
+                 }
+
+             </div>
+         }
+
+         @if (ViewBag.uploadedFreeBooks?.Count > 0)
+         {
+             <div class="uc-main uc-free">
+                 <div class="uc-main-header">
+                     <p>Free</p>
+                 </div>
+
+                 @foreach (Book book in ViewBag.uploadedFreeBooks)
+                 {
+                     <div class="uc-content">
+                         <div class="totalEnrollment">
+                             <p>@book.Readers Enrollments</p>
+                             <div class="totalEn-pointer"></div>
+                         </div>
+                         <div class="uc-content-head">
+                             <div>
+                                 <p>@book.Name</p>
+                             </div>
+                             <a href="/edit/book/free/@book.Id" title="edit this book"><i class="fa fa-pen"></i></a>
+                         </div>
+                         <div class="uc-content-tail">
+                             <a>@string.Format("{0:MMM dd, yyyy}", book.UploadTime)</a>
+                             <a href="/delete/book/@book.Id" class="uc-content-delete"><i class="fa fa-trash-alt"></i> Delete</a>
+                         </div>
+                     </div>
+                 }
+
+             </div>
+         }
+
+
+         @if (ViewBag.uploadedCourses?.Count > 0)
+         {
+     <div class="uc-main uc-course">
+         <div class="uc-main-header">
+             <p>Courses</p>
+         </div>
+         @foreach (Course course in ViewBag.uploadedCourses)
+         {
+             <div class="uc-content">
+                 <div class="totalEnrollment">
+                     <p>@course.Readers Enrollments</p>
+                     <div class="totalEn-pointer"></div>
+                 </div>
+                 <div class="uc-content-head">
+                     <div>
+                         <p>@course.Name</p>
+                     </div>
+                     <a href="/edit/course/@course.Id" title="edit this course"><i class="fa fa-pen"></i></a>
+                 </div>
+                 <div class="uc-content-tail">
+                     <a>@string.Format("{0:MMM dd, yyyy}", course.UploadTime)</a>
+                     <a href="/delete/course/@course.Id" class="uc-content-delete"><i class="fa fa-trash-alt"></i> Delete</a>
+                 </div>
+             </div>
+
+         }
+         </div>
+         }
+         </div>
+         }
+         else
+         {
+
+
+             <div class="emptyCont">
+                 <div class="eiCross">
+
+                     <i class="fa fa-times" style="color:#dfdfdf;font-size:42px;padding:15px 23px;border-radius: 50%;border:3px solid #dfdfdf;"></i>
+                 </div>
+                 <p class="eiMain">No uploads Found</p>
+                 <p class="eiSub">You can upload some Free or Premium Books and Free Online course's URL from any sources.</p>
+             </div>
+
+         }
+     </div>
+        <div class="premium-container">
+            <div class="sub-header">
+                <div class="sub-heading">
+                    <h2><span><i class="fa fa-cloud-upload-alt"></i></span> Upload Here</h2>
+                </div>
+            </div>
+            <div class="container">
+                <div class="up-logo-container">
+                    <a href="/upload/free">
+                        <div class="up-logo-left">
+                            <p>Free Book</p>
+                        </div>
+                    </a>
+                    
+                    <a href="/upload/premium">
+                        <div class="up-logo-front">
+                            <p>Premium Book</p>
+                        </div>
+                    </a>
+                    
+                    <a href="/upload/course">
+                        <div class="up-logo-top">
+                            <p>Course</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>

@@ -1,0 +1,31 @@
+ @{
+    Layout = "./../Shared/" + ViewBag.layoutName;
+}
+
+
+<section class="container">
+        <div class="premium-container">
+            <h2>Report Here</h2>
+            <div class="report-form">
+                <form action="/report/@ViewBag.type/@ViewBag.resourceId?redirect=@ViewBag.redirect" method="post" id="user-report-form">
+                    <input type="text" value="" placeholder="Category" name="subject" list="reportDataCont">
+                    <br>
+                    <datalist id="reportDataCont">
+                        <option value="Resource Doesn't contains valid content"></option>
+                        <option value="Catogory is Different"></option>
+                        <option value="Uploader is doing scam"></option>
+                        <option value="Having Noice content"></option>
+                        <option value="Others"></option>
+                    </datalist> 
+                    <div class="textarea-holder">
+                        <textarea placeholder="what's wrong with this..."  name="description" id="" cols="30" rows="5"></textarea>
+                        <p class="textarea-count">
+                            <span class="textarea-len">0</span> of 200
+                        </p>
+                    </div>
+                    
+                    <button disabled>Report</button>
+                </form>
+            </div>
+        </div>
+    </section>

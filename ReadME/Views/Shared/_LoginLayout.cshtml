@@ -1,0 +1,199 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @if (ViewBag.activeHome == true)
+    {
+        <title>Read.me</title>
+    }
+    else if (ViewBag.activeUpload == true)
+    {
+        <title>Read.me | Upload</title>
+    }
+    else if (ViewBag.activeProfile == true)
+    {
+        <title>Read.me | Profile</title>
+    }
+    else if (ViewBag.activeAboutUs == true)
+    {
+        <title>Read.me | About us</title>
+    }
+    else if (ViewBag.activeEduHub == true)
+    {
+        <title>Read.me | Edu-HUB</title>
+    }
+    else
+    {
+        <title>Read.me</title>
+    }
+
+    <link rel="icon" href="~/assets/icon.png" type="image/png">
+
+    <link rel="stylesheet" href="~/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="~/css/AL_headerStyle.css">
+    <link rel="stylesheet" href="~/css/@ViewBag.style">
+    <script src="~/js/jquery.js"></script>
+    <script src="~/js/animation.js"></script>
+    @if (ViewBag.reader != null)
+    {
+        <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
+    }
+</head>
+<body>
+    <div class="layer"></div>
+    <header>
+
+        <div class="main-menu">
+            <button class="mobile-menu"><i class="fa fa-bars"></i></button>
+            <h1><span><i class="fa fa-dice-d6"></i> </span>Read.me</h1> 
+
+
+            <nav>
+                <button class="close-nav"><i class="fa fa-times"></i></button>
+                <ul class="MasterNav">
+                    <a href="/" class="homeNav">
+                        <li> Home</li>
+                        @if (ViewBag.activeHome == true)
+                        {
+                            <div class="hover active"></div>
+                        }
+                        else
+                        {
+                            <div class="hover"></div>
+                        }
+                    </a>
+                    <a href="/upload" class="uploadNav">
+                        <li>Upload</li>
+                        @if (ViewBag.activeUpload == true)
+                        {
+                            <div class="hover active"></div>
+                        }
+                        else
+                        {
+                            <div class="hover"></div>
+                        }
+                    </a>
+                    <a class="loginNav profileLink">
+                        <li>Profile</li>
+                        @if (ViewBag.activeProfile == true)
+                        {
+                            <div class="hover active"></div>
+                        }
+                        else
+                        {
+                            <div class="hover"></div>
+                        }
+                        <div class="ProfileNav ">
+                            <ul>
+                                <a href="/profile">
+                                    <li><i class="fa fa-user"></i> My Profile</li>
+                                </a>
+
+                                <a href="/upload">
+                                    <li><i class="fa fa-cloud-upload-alt"></i> Uploads</li>
+                                </a>
+                                <a href="/subscribers">
+                                    <li><i class="fa fa-check-circle"></i> Subscribers</li>
+                                </a>
+                                <a href="/myenrols/premium">
+                                    <li><i class="fa fa-book"></i> My Books</li>
+                                </a>
+                                <a href="/saved/premium">
+                                    <li><i class="fa fa-bookmark"></i> Saved</li>
+                                </a>
+                                <a href="/notification">
+                                    <li class="profilenav-notification">
+                                        <i class="fa fa-bell"></i> Notification
+                                        @if (ViewBag.notificationCount > 0)
+                                        {
+                                            <div class="notifCount">@ViewBag.notificationCount</div>
+
+                                        }
+                                    </li>
+
+                                </a>
+                                <a href="/logout">
+                                    <li><i class="fa fa-power-off"></i> Logout</li>
+                                </a>
+                            </ul>
+                        </div>
+                    </a>
+                    <a href="/about-us" class="aboutUsNav">
+                        <li>About us</li>
+                        @if (ViewBag.activeAboutUs == true)
+                        {
+                            <div class="hover active"></div>
+                        }
+                        else
+                        {
+                            <div class="hover"></div>
+                        }
+                    </a>
+                    <a href="/edu-hub" class="eduHubNav">
+                        <li>EDU-hub</li>
+                        @if (ViewBag.activeEduHub == true)
+                        {
+                            <div class="hover active"></div>
+                        }
+                        else
+                        {
+                            <div class="hover"></div>
+                        }
+                    </a>
+                    <a href="/free" class="free-nav">
+                        <li><span> FREE <i class="fa fa-angle-right"></i></span></li>
+                    </a>
+                </ul>
+            </nav>
+
+        </div>
+        @if (@ViewBag.search)
+        {
+            <div class="search">
+                <div class="search-bar">
+                    <input type="text" placeholder="Let's discover..." />
+                    <a href=""><i class="fa fa-search"></i></a>
+                </div>
+            </div>
+        }
+
+        @if (@ViewBag.message)
+        {
+            @if (@ViewBag.success != null)
+            {
+                <div class="success-message">
+                    <p><span><i class="fa fa-check-circle"></i></span>@ViewBag.success</p><button><i class="fa fa-times"></i></button>
+                </div>
+            }
+
+            @if (@ViewBag.error != null)
+            {
+                <div class="error-message">
+                    <p><span><i class="fa fa-ban"></i></span>@ViewBag.error</p><button><i class="fa fa-times"></i></button>
+                </div>
+            }
+
+        }
+
+    </header>
+
+
+      @RenderBody()
+
+
+
+      <footer>
+         <div class="quote">
+            <p><span>Read on </span>Read.me</p>
+        </div> 
+        <div>
+             <p><span><i class="fa fa-copyright"> </i></span>copyright 2021, <span>All rights reserved</span></p>
+        </div>
+    </footer>
+</body>
+</html>
+
+

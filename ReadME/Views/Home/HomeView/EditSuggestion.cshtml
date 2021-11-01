@@ -1,0 +1,31 @@
+@{
+    Layout = "../../Shared/" + ViewBag.layoutName;
+    
+}
+
+@using ReadME.Models; 
+
+<div class="container">
+    <h2>Select Your Interests</h2>
+    <div class="fp-email">
+        <div>
+            <form action="/edit-suggestion?redirect=@ViewBag.redirect" method="post" novalidate id="form-editSuggestion">
+                <textarea   name="suggestion" id="" cols="30" rows="5"   readonly></textarea>
+                <div class="save-editButton">
+                    <button type="submit">Save</button>
+                </div>
+                <div class="sug-options">
+
+                    @foreach (Category category in ViewBag.categories)
+                    {
+                        <span>@category.Name</span>
+                    }
+
+
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+</div>

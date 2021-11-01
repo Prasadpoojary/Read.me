@@ -1,0 +1,154 @@
+@{
+    Layout ="./../Shared/"+ViewBag.layoutName;
+}
+
+    <section class="container">
+        <div class="most-valued-container">
+            
+            <div class="co-uploader">
+                <p>Uploaded by</p>
+                <h4>@ViewBag.UploaderName</h4>
+                @if (ViewBag.book.IsPremium)
+                {
+                    <a href="/portfolio/@ViewBag.book.Uploader/premium">Goto Portfolio</a>
+                }
+                else
+                {
+                    <a href="/portfolio/@ViewBag.book.Uploader/free">Goto Portfolio</a>
+                }
+                <div class="co-subscribe">
+                    @if (ViewBag.selfUpload == false)
+                    {
+                        @if (ViewBag.isSubscribed)
+                        {
+                            <a href="/subscribe/@ViewBag.book.Uploader?redirect=/checkout/book/@ViewBag.book.Id"
+                               title="You won't be notified when this uploader's BOOK is uploaded"
+                               class="subscribe" style="background:red;">Unsubscribe</a>
+                        }
+                        else
+                        {
+                            <a href="/subscribe/@ViewBag.book.Uploader?redirect=/checkout/book/@ViewBag.book.Id"
+                               title="Subscribe to this Uploader to be notified when the BOOK is uploaded"
+                               class="subscribe">Subscribe</a>
+                        }
+
+                    }
+
+                    <span>
+                        <i class="fa fa-check-circle"></i> @ViewBag.subscriberCount subscribers
+                    </span>
+                </div>
+                <div class="co-ticket">
+                    <p>Facing any issues ?<a href="/ticket/@ViewBag.book.Id?redirect=/checkout/book/@ViewBag.book.Id">Raise a Ticket</a></p>
+                </div>
+
+            </div>
+               
+        </div>
+        <div class="premium-container">
+          
+            <div class="co-details">
+                <h4>@ViewBag.book.Name</h4>
+                <div class="co-author">
+                    <p><span>-</span> @ViewBag.book.Author</p>
+                </div>
+                
+                <div class="co-img-desc">
+                    <div class="co-img">
+                        <img src="~/@ViewBag.book.ThumbnailPath" alt="Book-thumbnail">
+                        <div class="book-spec">
+                            <div class="book-likes">
+                                <p>@ViewBag.book.Likes</p>
+                                @if (ViewBag.isLiked)
+                                {
+                                    <a href="/like/@ViewBag.book.Id?redirect=/checkout/book/@ViewBag.book.Id">
+                                        <i style="color: #d41313;" class="fa fa-heart"></i>
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a href="/like/@ViewBag.book.Id?redirect=/checkout/book/@ViewBag.book.Id">
+                                        <i class="fa fa-heart"></i>
+                                    </a>
+                                }
+
+                            </div>
+                            <div class="book-views">
+                                <p>@ViewBag.book.Readers</p>
+                                <a href="">
+                                    <i class="fa fa-eye"></i>
+                                </a>
+                            </div>
+                            <div class="book-feadback">
+                                <p>@ViewBag.book.Comments</p>
+                                <a href="/comment/book/@ViewBag.book.Id?redirect=/checkout/book/@ViewBag.book.Id">
+                                    <i class="fa fa-comments"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="co-desc">
+                        <p>
+                            @ViewBag.book.Description
+                        </p>
+                        @if (ViewBag.isOwnBook || ViewBag.selfUpload) 
+                        {
+
+                            <div class="co-button">
+                                <a href="/read/@ViewBag.book.Id">Read Now <span></span></a>
+                            </div>
+                        }
+                        else
+                        {
+
+                    <div class="co-button">
+                        @if (ViewBag.book.IsPremium)
+                        {
+                            <a href="/buy/@ViewBag.book.Id">Buy Now <span>Rs.@ViewBag.book.Price</span></a>
+                        }
+                        else
+                        {
+                            <a href="/buy/@ViewBag.book.Id">Buy Now <span>Free</span></a>
+
+                        }
+
+
+                        @if (ViewBag.isSaved)
+                        {
+                            <a href="/unsave/book/@ViewBag.book.Id?redirect=/checkout/book/@ViewBag.book.Id" title="Book will be removed from Saved Books" class="co-save"><i class="fa fa-bookmark"></i> Unsave</a>
+
+                        }
+                        else
+                        {
+                            <a href="/save/book/@ViewBag.book.Id?redirect=/checkout/book/@ViewBag.book.Id" title="Save this Book for Future" class="co-save"><i class="fa fa-bookmark"></i> Save</a>
+
+                        }
+                    </div>
+                    }
+
+
+
+
+            </div>
+                    </div>
+
+            
+            <div class="co-comments-cont" id="commentSectionPoint">
+                @using ReadME.Models;
+
+                @foreach (Comment comment in ViewBag.comments)
+                {
+                    <div class="co-comment">
+                        <p>@comment.Review</p>
+                        <div class="co-comment-from">
+                            <p>- @comment.Name</p>
+                            <span>@comment.TimeStamp</span>
+                        </div>
+                    </div>
+                }
+            </div>
+           
+        </div>
+            </div>
+       
+    </section>
