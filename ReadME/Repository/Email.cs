@@ -27,7 +27,7 @@ namespace ReadME.Repository
             // send email
             using var smtp = new SmtpClient();
             smtp.Connect("smtp.gmail.com", 587, SecureSocketOptions.StartTls);
-            smtp.Authenticate("readme.udupi@gmail.com", "Readme2021@");
+            smtp.Authenticate("readme.udupi@gmail.com", "<Password gothilla>");
             smtp.Send(email);
             smtp.Disconnect(true);
 
